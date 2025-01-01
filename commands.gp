@@ -1,4 +1,4 @@
-set term x11 window "0x600007"
+set term x11 window "0x800007"
 
 set object 1 rectangle from screen 0,0 to screen 1,1 fillcolor rgb"#ffffff" behind
 set key font ",6"
