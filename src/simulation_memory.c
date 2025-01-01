@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+
 
 #include "simulation_memory.h"
 #include "logger.h"
@@ -28,9 +28,9 @@ void set_building(SimulationMemory *memory, int row, int col, int building_type)
 }
 
 void initialize_memory(SimulationMemory *memory){
-    srand(time(NULL));
-    set_headline(memory);
-    set_day(memory, 1);
+    
+    //set_headline(memory);
+    //set_day(memory, 1);
     for(int row = 0; row < CITY_ROWS; row++){
         for(int col = 0; col < CITY_COLUMNS; col++){
             set_building(memory, row, col, rand() % 4);
