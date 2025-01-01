@@ -13,7 +13,15 @@ struct simulation_memory_s {
     char headline_of_the_day[255];
     int day;
     pid_t pid_epidemic_sim;
-    /* And bla bla bla */
+    int buildings[7][7];
 };
+
+
+void set_headline(SimulationMemory *memory);
+void set_day(SimulationMemory *memory, int day);
+void set_pid_epidemic_sim(SimulationMemory *memory, pid_t pid_epidemic_sim);
+void set_building(SimulationMemory *memory, int row, int col, int building_type);
+void initialize_memory(SimulationMemory *memory);
+
 
 #endif
