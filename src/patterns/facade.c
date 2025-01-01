@@ -12,7 +12,7 @@ Facade *new_facade(const SimulationMemory *memory) {
     if (memory != NULL) {
         facade = (Facade *) malloc(sizeof(Facade));
 
-        initialize_memory(&facade->memory)
+        initialize_memory(&facade->memory);
 
         facade->get_pid_epidemic_sim = facade_get_pid_epidemic_sim;
         facade->get_building = facade_get_building;
