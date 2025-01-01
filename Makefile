@@ -104,7 +104,7 @@ endif
 #                                  Viewer
 # -----------------------------------------------------------------------------
 #
-viewer: .tmp/viewer/main.o .tmp/viewer/viewer.o .tmp/patterns/facade.o .tmp/logger.o
+viewer: .tmp/viewer/main.o .tmp/viewer/viewer.o .tmp/patterns/facade.o .tmp/logger.o .tmp/simulation_memory.o
 	$(CC) $^ -o $(OUTPUT_DIR)/viewer $(LDFLAGS) $(shell pkg-config --libs gtk+-3.0)
 
 .tmp/viewer/main.o: $(SRC_DIR)/viewer/main.c $(INCLUDE_DIR)/viewer.h
