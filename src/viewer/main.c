@@ -9,6 +9,7 @@
 #endif
 
 #include <stdlib.h>
+#include <time.h>
 
 #include "logger.h"
 #include "viewer.h"
@@ -17,6 +18,7 @@
  * Runs the Simulation Viewer process.
  */
 int main(int argc, char **argv) {
+    srand(time(NULL));
     GtkApplication *gtk_app;
     SimulationMemory *memory;
     Application *app; /* Structure that interfaces with the simulation */

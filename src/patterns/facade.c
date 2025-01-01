@@ -2,6 +2,7 @@
  * A Facade design pattern.
  */
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "facade.h"
@@ -11,6 +12,10 @@ Facade *new_facade(const SimulationMemory *memory) {
 
     if (memory != NULL) {
         facade = (Facade *) malloc(sizeof(Facade));
+        facade->memory = (SimulationMemory *)malloc(sizeof(SimulationMemory));
+
+        initialize_memory(facade->memory);
+
         facade->get_pid_epidemic_sim = facade_get_pid_epidemic_sim;
         facade->get_building = facade_get_building;
         facade->get_infection = facade_get_infection;
@@ -24,7 +29,7 @@ int facade_get_pid_epidemic_sim(const Facade *facade) {
 }
 
 int facade_get_building(const Facade *facade, int row, int column) {
-    return 0;
+    return facade->memory->buildings[row][column];
 }
 
 int facade_get_infection(const Facade *facade, int row, int column) {
