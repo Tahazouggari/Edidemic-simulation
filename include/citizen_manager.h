@@ -1,0 +1,4 @@
+#ifndef CITIZEN_MANAGER_H
+#define CITIZEN_MANAGER_H
+
+#endif /* CITIZEN_MANAGER_H */

@@ -1,0 +1,50 @@
+#background {
+  background-color: #ffffff;
+}
+
+#bg-grid {
+  background-color: #000000;
+}
+
+#normal {
+  background-color: #ffffff;
+  color: #000000;
+  font-weight: bold;
+}
+
+#contamination1 {
+  background-color: #f1c40f;
+  color: #000000;
+  font-weight: bold;
+}
+
+#contamination2 {
+  background-color: #e67e22;
+  color: #000000;
+  font-weight: bold;
+}
+
+#contamination3 {
+  background-color: #d35400;
+  color: #000000;
+  font-weight: bold;
+}
+
+#contamination4 {
+  background-color: #c0392b;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+#custom_headline {
+  color: #444444;
+  font-weight: bold;
+  font-size: 1.8em;
+  font-family: "Times New Roman", serif;
+}
+
+#custom_day {
+  color: #444444;
+  font-weight: bold;
+  font-size: 2.5em;
+}
