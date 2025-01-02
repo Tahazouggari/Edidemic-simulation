@@ -68,6 +68,68 @@ void set_buildings(SimulationMemory *memory){
     } 
 }
 
+void add_citizens(SimulationMemory *memory, int row, int col, int citizens_count){
+    memory->citizens[row][col] = memory->citizens[row][col] + citizens_count;
+}
+
+void add_firefighters(SimulationMemory *memory, int row, int col, int firefighters_count){
+    memory->firefighters[row][col] = memory->firefighters[row][col] + firefighters_count;
+}
+
+void add_doctors(SimulationMemory *memory, int row, int col, int doctors_count){
+    memory->doctors[row][col] = memory->doctors[row][col] + doctors_count;
+}
+
+void add_dead_citizens(SimulationMemory *memory, int row, int col, int dead_citizens_count){
+    memory->dead_citizens[row][col] = memory->dead_citizens[row][col] + dead_citizens_count;
+}
+
+void add_ashes(SimulationMemory *memory, int row, int col, int ashes_count){
+    memory->ashes[row][col] = memory->ashes[row][col] + ashes_count;
+}
+
+void init_people(SimulationMemory *memory, int number_of_citizens, int number_of_firefighters, int number_of_doctors, int number_of_dead_citizens, int number_of_ashes){
+    for(int row = 0; row < CITY_ROWS; row++){
+        for(int col = 0; col < CITY_COLUMNS; col++){
+            memory->citizens[row][col] = 0;
+            memory->firefighters[row][col] = 0;
+            memory->doctors[row][col] = 0;
+            memory->dead_citizens[row][col] = 0;
+            memory->ashes[row][col] = 0;
+        }
+    } 
+
+
+    add_doctors(memory, CITY_ROWS / 2, CITY_COLUMNS / 2, 1);
+    add_firefighters(memory, 0, CITY_COLUMNS - 1, 1);
+    add_firefighters(memory, CITY_ROWS - 1, 0, 1);
+
+    int medic = number_of_doctors - 1;
+    while (medic > 0){
+        int rand_row = rand() % 7;
+        int rand_col = rand() % 7;
+        add_doctors(memory, rand_row, rand_col, 1);
+        medic--;
+    }
+
+    int firefighters = number_of_firefighters - 2;
+    while (firefighters > 0){
+        int rand_row = rand() % 7;
+        int rand_col = rand() % 7;
+        add_firefighters(memory, rand_row, rand_col, 1);
+        firefighters--;
+    }
+
+    int citizens = number_of_citizens - 1;
+    while (citizens > 0){
+        int rand_row = rand() % 7;
+        int rand_col = rand() % 7;
+        add_citizens(memory, rand_row, rand_col, 1);
+        citizens--;
+    }
+}
+
+
 void initialize_memory(SimulationMemory *memory){
     //set_headline(memory);
     //set_day(memory, 1);
