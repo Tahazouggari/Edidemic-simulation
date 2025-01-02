@@ -1,5 +1,6 @@
 #include "citizen_manager.h"
 #include "logger.h"
+#include <stdlib.h>
 
 /* 
  * ----------------------------------------------------------------------------
