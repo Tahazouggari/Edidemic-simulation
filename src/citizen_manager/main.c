@@ -7,43 +7,18 @@
  * Runs the Citizen Manager process.
  */
 int main(int argc, const char *argv[]) {
-    character_manager_t *manager = new_character_manager();
-    character_factory_t *factory;
-    character_t *character;
+   status_p *citizen1 = create_citizen(CITIZEN, 10, 20, 0); // Harry
+    status_p *doctor1 = create_citizen(DOCTOR, 15, 25, 1);   // Ron
+    status_p *firefighter1 = create_citizen(FIREFIGHTER, 5, 10, 2); // Hermione
 
-    // Create and manage a citizen
-    log_info("Creating a new citizen using the manager.");
-    factory = manager->get_factory(CITIZEN);
-    character = factory->factory_method();
-    character->operation(character);
-    free(factory);
-    free(character);
+    printf("Displaying Citizen:\n");
+    display_citizen(citizen1);
 
-    // Create and manage a doctor
-    log_info("Creating a new doctor using the manager.");
-    factory = manager->get_factory(DOCTOR);
-    character = factory->factory_method();
-    character->operation(character);
-    free(factory);
-    free(character);
+    printf("Displaying Doctor:\n");
+    display_citizen(doctor1);
 
-    // Create and manage a firefighter
-    log_info("Creating a new firefighter using the manager.");
-    factory = manager->get_factory(FIREFIGHTER);
-    character = factory->factory_method();
-    character->operation(character);
-    free(factory);
-    free(character);
+    printf("Displaying Firefighter:\n");
+    display_citizen(firefighter1);
 
-    // Create and manage a journalist
-    log_info("Creating a new journalist using the manager.");
-    factory = manager->get_factory(JOURNALIST);
-    character = factory->factory_method();
-    character->operation(character);
-    free(factory);
-    free(character);
-
-    free(manager);
-
-    exit(EXIT_SUCCESS);
+    return 0;
 }

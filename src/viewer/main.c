@@ -27,6 +27,7 @@ int main(int argc, char **argv) {
     memory = (SimulationMemory *)malloc(sizeof(SimulationMemory));
     app = (Application *)malloc(sizeof(Application));
     app->simulation_facade = new_facade(memory);
+    
 
     if (app->simulation_facade == NULL) {
         log_error("Impossible to interface facade with shared memory");

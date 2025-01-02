@@ -288,8 +288,12 @@ void update_infection_labels(const Application *app, int row, int col) {
     }
 }
 
-void count_citizens(const Application *app, int row, int col, int *citizens,
-                    int *doctors, int *firefighters, int *dead_citizens, int *burnt_bodies) {
+void count_citizens(const Application *app, int row, int col, int *citizens, int *doctors, int *firefighters, int *dead_citizens, int *burnt_bodies) {
+    *citizens = app->simulation_facade->memory->citizens[row][col];
+    *doctors = app->simulation_facade->memory->doctors[row][col];
+    *firefighters = app->simulation_facade->memory->firefighters[row][col];
+    *dead_citizens = app->simulation_facade->memory->dead_citizens[row][col];
+    *burnt_bodies = app->simulation_facade->memory->ashes[row][col];
 }
 
 void update_citizen_labels_and_images(const Application *app, int row, int col,
