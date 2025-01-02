@@ -8,18 +8,20 @@
 #endif
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/mman.h>
-#include <sys/types.h>
 #include <signal.h>
-#include <mqueue.h>
+#include <unistd.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <string.h>
 
+#define SHM_NAME "epidemic_shared_memory"
+#define MAX_CITIZENS 100
 
-#define SHARED_MEM "/shm_city"
-
-int create_shared_memory();
-
+typedef struct {
+    int healthy;
+    int sick;
+    int dead;
+    int burned;
+} CityState;
 
 #endif

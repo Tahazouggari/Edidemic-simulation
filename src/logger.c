@@ -34,11 +34,3 @@ void log_debug(const char *message, ...) {
     printf(RESET "");
     va_end(args);
 }
-void log_warning(const char *message, ...) {
-    va_list args;
-    va_start(args, message);
-    printf(YEL);
-    log_format("Warning", message, args);
-    printf(RESET);
-    va_end(args);
-}

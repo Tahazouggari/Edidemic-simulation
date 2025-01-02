@@ -134,4 +134,6 @@ void initialize_memory(SimulationMemory *memory){
     //set_headline(memory);
     //set_day(memory, 1);
     set_buildings(memory);
+    
+    init_people(memory, 25, 6, 4, 0, 0);
 }
