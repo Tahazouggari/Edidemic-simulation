@@ -8,6 +8,7 @@
 #include "factory.h"
 #include "logger.h"
 
+
 character_factory_t *new_factory(character_t *(*factory_method)(void)) {
     character_factory_t *factory;
 
@@ -22,6 +23,8 @@ character_t *new_citizen(void) {
 
     citizen = (character_t *) malloc(sizeof(character_t));
     citizen->operation = operation_citizen;
+    
+
 
     return citizen;
 }

@@ -7,25 +7,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * "character_t" defines the interface to "objects" that will be created by the
- * factory.
- */
-typedef struct character_s character_t;
+// Maximum length for a citizen's name
+#define CITIZEN_MAX_NAME_LENGTH 32
 
-struct character_s {
-    void (*operation)(character_t *);
-};
+// Enumeration for different types of people
+typedef enum Person {
+    CITIZEN,
+    DOCTOR,
+    FIREFIGHTER,
+    JOURNALIST,
+    REPORTER,
+    DEAD,
+    BURNED,
+} Person;
 
-/*
- * "character_factory_t" declares the production function that should return
- * "character_t" objects.
- */
-typedef struct character_factory_s character_factory_t;
+// Structure for the status of a character
+typedef struct status {
+    unsigned int positionX;
+    unsigned int positionY;
+    double contamination;
+    int is_sick;
+    char name[CITIZEN_MAX_NAME_LENGTH];
+    unsigned int nbr_days_sickness;
+    Person type;
+    int days_spent_in_hospital_asHealthy;
+    int days_out_hospital;
+    int care_pouch; // Number of care pouches (if applicable)
+    void (*operation)(struct status *);
+} status_p;
 
-struct character_factory_s {
+// Define `character_t` as an alias for `status_p`
+typedef struct status character_t;
+
+// Function pointer for operations on a character
+typedef void (*operation_fn)(character_t *);
+
+// Factory struct
+typedef struct character_factory_s {
     character_t *(*factory_method)(void);
-};
+} character_factory_t;
 
 character_factory_t *new_factory(character_t *(*factory_method)(void));
 
@@ -44,6 +64,6 @@ void operation_doctor(character_t *doctor);
 void operation_firefighter(character_t *firefighter);
 
 void operation_journalist(
-        character_t *journalist);
+    character_t *journalist);
 
 #endif
