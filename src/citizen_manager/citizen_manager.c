@@ -17,12 +17,13 @@ status_p *create_citizen(Person e,unsigned int x, unsigned int y,int id_name){
     status_p *citi = (status_p *)malloc(sizeof(status_p));
    
 
-   
+    
     citi->positionX = x;
     citi->positionY = y;
     citi->contamination = 0;
     citi->is_sick = 0;
     citi->days_spent_in_hospital_asHealthy = 0;
+    citi->type = e;
     strcpy(citi->name, names[id_name]);
 
     if (e==DOCTOR){

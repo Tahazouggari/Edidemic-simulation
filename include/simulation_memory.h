@@ -2,6 +2,7 @@
 #define SIMULATION_MEMORY_H
 
 #include <sys/types.h>
+#include "citizen_manager.h"
 
 #define SIMULATION_MEMORY_PATH "/epidemic2023"
 #define CITY_ROWS    7
@@ -14,11 +15,12 @@ struct simulation_memory_s {
     int day;
     pid_t pid_epidemic_sim;
     int buildings[7][7];
-    int citizens[7][7];
-    int firefighters[7][7];
-    int doctors[7][7];
-    int dead_citizens[7][7];
-    int ashes[7][7];
+    int n_of_citizens[7][7];
+    int n_of_firefighters[7][7];
+    int n_of_doctors[7][7];
+    int n_of_dead_citizens[7][7];
+    int n_of_ashes[7][7];
+    status_p* citizens[25];
 };
 
 
@@ -28,7 +30,7 @@ void set_pid_epidemic_sim(SimulationMemory *memory, pid_t pid_epidemic_sim);
 void set_building(SimulationMemory *memory, int row, int col, int building_type);
 void initialize_memory(SimulationMemory *memory);
 
-void add_citizens(SimulationMemory *memory, int row, int col, int citizens_count);
+void add_citizens(SimulationMemory *memory, int row, int col, int citizens_count, int id);
 void add_firefighters(SimulationMemory *memory, int row, int col, int firefighters_count);
 void add_doctors(SimulationMemory *memory, int row, int col, int doctors_count);
 void add_dead_citizens(SimulationMemory *memory, int row, int col, int dead_citizens_count);
