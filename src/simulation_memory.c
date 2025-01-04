@@ -2,8 +2,11 @@
 #include <stdlib.h>
 
 
+
 #include "simulation_memory.h"
 #include "logger.h"
+#include "citizen_manager/citizen_manager.c"
+#include "city_manager/city_manager.c"
 
 /* 
  * ----------------------------------------------------------------------------
@@ -24,7 +27,7 @@ void set_pid_epidemic_sim(SimulationMemory *memory, pid_t pid_epidemic_sim){
 }
 
 void set_building(SimulationMemory *memory, int row, int col, int building_type){
-    memory->buildings[row][col] = building_type;
+   init_city( memory->City);
 }
 
 void set_hospital(SimulationMemory *memory){
@@ -68,37 +71,42 @@ void set_buildings(SimulationMemory *memory){
     } 
 }
 
-void add_citizens(SimulationMemory *memory, int row, int col, int citizens_count){
-    memory->citizens[row][col] = memory->citizens[row][col] + citizens_count;
+void add_citizens(SimulationMemory *memory, int row, int col, int citizens_count, int id){
+    memory->citizens[id] = create_citizen(CITIZEN, row, col, rand() % 32);
+    display_citizen(memory->citizens[id]);
+    memory->n_of_citizens[row][col] = memory->n_of_citizens[row][col] + citizens_count;
 }
 
 void add_firefighters(SimulationMemory *memory, int row, int col, int firefighters_count){
-    memory->firefighters[row][col] = memory->firefighters[row][col] + firefighters_count;
+    memory->n_of_firefighters[row][col] = memory->n_of_firefighters[row][col] + firefighters_count;
 }
 
 void add_doctors(SimulationMemory *memory, int row, int col, int doctors_count){
-    memory->doctors[row][col] = memory->doctors[row][col] + doctors_count;
+    memory->n_of_doctors[row][col] = memory->n_of_doctors[row][col] + doctors_count;
 }
 
 void add_dead_citizens(SimulationMemory *memory, int row, int col, int dead_citizens_count){
-    memory->dead_citizens[row][col] = memory->dead_citizens[row][col] + dead_citizens_count;
+    memory->n_of_dead_citizens[row][col] = memory->n_of_dead_citizens[row][col] + dead_citizens_count;
 }
 
 void add_ashes(SimulationMemory *memory, int row, int col, int ashes_count){
-    memory->ashes[row][col] = memory->ashes[row][col] + ashes_count;
+    memory->n_of_ashes[row][col] = memory->n_of_ashes[row][col] + ashes_count;
 }
 
 void init_people(SimulationMemory *memory, int number_of_citizens, int number_of_firefighters, int number_of_doctors, int number_of_dead_citizens, int number_of_ashes){
     for(int row = 0; row < CITY_ROWS; row++){
         for(int col = 0; col < CITY_COLUMNS; col++){
-            memory->citizens[row][col] = 0;
-            memory->firefighters[row][col] = 0;
-            memory->doctors[row][col] = 0;
-            memory->dead_citizens[row][col] = 0;
-            memory->ashes[row][col] = 0;
+            memory->n_of_citizens[row][col] = 0;
+            memory->n_of_firefighters[row][col] = 0;
+            memory->n_of_doctors[row][col] = 0;
+            memory->n_of_dead_citizens[row][col] = 0;
+            memory->n_of_ashes[row][col] = 0;
         }
-    } 
+    }
 
+    for(int i = 0; i < 25; i++){
+        memory->citizens[i] = (status_p *)malloc(sizeof(status_p));
+    }
 
     add_doctors(memory, CITY_ROWS / 2, CITY_COLUMNS / 2, 1);
     add_firefighters(memory, 0, CITY_COLUMNS - 1, 1);
@@ -124,7 +132,7 @@ void init_people(SimulationMemory *memory, int number_of_citizens, int number_of
     while (citizens > 0){
         int rand_row = rand() % 7;
         int rand_col = rand() % 7;
-        add_citizens(memory, rand_row, rand_col, 1);
+        add_citizens(memory, rand_row, rand_col, 1, citizens);
         citizens--;
     }
 }
@@ -133,7 +141,28 @@ void init_people(SimulationMemory *memory, int number_of_citizens, int number_of
 void initialize_memory(SimulationMemory *memory){
     //set_headline(memory);
     //set_day(memory, 1);
-    set_buildings(memory);
     
-    init_people(memory, 25, 6, 4, 0, 0);
+    
+   // Inclure vos définitions nécessaires
+
+
+    
+
+    // Allouer dynamiquement la mémoire pour la ville
+    memory->City = (city_t *)malloc(sizeof(city_t));
+    if (!memory->City) {
+        fprintf(stderr, "Error: Memory allocation failed for City.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Allouer dynamiquement la mémoire pour chaque citoyen
+    for (int i = 0; i < 25; i++) {
+        memory->citizens[i] = (status_p *)malloc(sizeof(status_p));
+        
+    }
+    init_city(memory->City);
+
+   
+
 }
+
