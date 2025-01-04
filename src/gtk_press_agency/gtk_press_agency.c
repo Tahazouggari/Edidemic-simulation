@@ -210,3 +210,4 @@ static void stop_press_agency(GtkWidget *window, gpointer data) {
     destroy_channel(CHANNEL_NAME);
     kill(gnuplot_pid, SIGINT);
 }
+
