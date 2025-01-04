@@ -70,7 +70,7 @@ void set_buildings(SimulationMemory *memory){
 }
 
 void add_citizens(SimulationMemory *memory, int row, int col, int citizens_count, int id){
-    memory->citizens[id] = create_citizen(CITIZEN, row, col, 0);
+    memory->citizens[id] = create_citizen(CITIZEN, row, col, rand() % 32);
     display_citizen(memory->citizens[id]);
     memory->n_of_citizens[row][col] = memory->n_of_citizens[row][col] + citizens_count;
 }

@@ -7,11 +7,11 @@
  * ----------------------------------------------------------------------------
  */
 status_p *create_citizen(Person e,unsigned int x, unsigned int y,int id_name){
-    const char *const names[] = {"Harry", "Ron", "Hermione", "Draco", "Luna", "Neville", "Hagrid", "Dumbledore",
-                             "Snape", "Voldemort", "Sirius", "Bellatrix", "Fred", "George", "Ginny", "McGonagall",
-                             "Cedric", "Cho", "Fleur", "Krum", "Tonks", "Remus", "Percy", "Molly", "Arthur", "Petunia",
-                             "Dudley", "Gilderoy", "Moody", "Seamus", "Dean", "Lavender", "Parvati", "Padma", "Peeves",
-                             "Argus", "Sprout", "Flitwick", "Binns"};
+    const char *const names[] = {"Taha", "Mohamed", "Johann", "Brida", "Foulen", "Falten", "Foulena", "Bouhal",
+                             "Saad", "Omar", "Hamza", "Ahmed", "Kamel", "Aymen", "Ramy", "Ayoub",
+                             "Iyadh", "Abdlaaziz", "Souhem", "Abdelwehed", "Rachid", "Zekri", "Haythem", "Ben Lbokht", "Yassine", "Tareq",
+                             "Eezedine", "Oussema", "Fawzi", "Achref", "Hatem", "Hazem", "Jamel", "Anas", "Ilyess",
+                             "Zitoun", "Yazid", "Zied", "Ismail"};
 
       
     status_p *citi = (status_p *)malloc(sizeof(status_p));
