@@ -3,7 +3,7 @@
 
 #include <sys/types.h>
 #include "citizen_manager.h"
-
+#include "city_manager.h"
 #define SIMULATION_MEMORY_PATH "/epidemic2023"
 #define CITY_ROWS    7
 #define CITY_COLUMNS 7
@@ -21,6 +21,7 @@ struct simulation_memory_s {
     int n_of_dead_citizens[7][7];
     int n_of_ashes[7][7];
     status_p* citizens[25];
+    city_t *City;
 };
 
 

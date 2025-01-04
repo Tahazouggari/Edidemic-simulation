@@ -56,6 +56,20 @@ timer: .tmp/timer/main.o .tmp/timer/timer.o
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@)
 
 # ADD YOU FILES IF NECESSARY
+# -----------------------------------------------------------------------------
+#                                  City manager
+# -----------------------------------------------------------------------------
+#
+city_manager: .tmp/city_manager/main.o .tmp/city_manager/city_manager.o \
+                 .tmp/logger.o
+	$(CC) $^ -o $(OUTPUT_DIR)/$@ $(LDFLAGS)
+	chmod u+x $(OUTPUT_DIR)/$@
+
+.tmp/city_manager/main.o: $(SRC_DIR)/city_manager/main.c $(INCLUDE_DIR)/city_manager.h
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@)
+
+.tmp/city_manager/city_manager.o: $(SRC_DIR)/city_manager/city_manager.c $(INCLUDE_DIR)/city_manager.h
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@)
 
 # -----------------------------------------------------------------------------
 #                                  Citizen manager
@@ -104,7 +118,7 @@ endif
 #                                  Viewer
 # -----------------------------------------------------------------------------
 #
-viewer: .tmp/viewer/main.o .tmp/viewer/viewer.o .tmp/patterns/facade.o .tmp/logger.o .tmp/simulation_memory.o
+viewer: .tmp/viewer/main.o .tmp/viewer/viewer.o .tmp/patterns/facade.o .tmp/logger.o .tmp/simulation_memory.o 
 	$(CC) $^ -o $(OUTPUT_DIR)/viewer $(LDFLAGS) $(shell pkg-config --libs gtk+-3.0)
 
 .tmp/viewer/main.o: $(SRC_DIR)/viewer/main.c $(INCLUDE_DIR)/viewer.h
@@ -115,6 +129,8 @@ viewer: .tmp/viewer/main.o .tmp/viewer/viewer.o .tmp/patterns/facade.o .tmp/logg
 
 .tmp/patterns/facade.o: $(SRC_DIR)/patterns/facade.c $(INCLUDE_DIR)/facade.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+	
+
 
 # ADD YOU FILES IF NECESSARY
 

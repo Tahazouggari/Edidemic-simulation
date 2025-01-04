@@ -11,8 +11,8 @@
         REPORTER,
         DEAD,
         BURNED,
+    }Person;
 
-<<<<<<< HEAD
 typedef struct status {
     int id; /*from 0 to the maximum number of that person's type, is unique and it helps keeping the citizen count under the maximum number of that person's type.*/
     unsigned int positionX;
@@ -26,12 +26,8 @@ typedef struct status {
     int days_out_hospital;
     int care_pouch;   /* if doctor out of hopital=> 5 care pouch 
                         ..  ..     in  the   ..  => 10 care pouch  */
-<<<<<<< HEAD
 
 
-=======
-}status_p;
->>>>>>> MT
 
     }status_p;
 
@@ -40,7 +36,7 @@ typedef struct status {
      * @return
      */
 
-    status_p* create_citizen(Person,unsigned in, unsigned int , int id_name);
+    status_p* create_citizen(Person e,unsigned int, unsigned int , int id_name);
 
     /**
  * display status of citizen

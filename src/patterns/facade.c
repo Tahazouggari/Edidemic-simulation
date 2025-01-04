@@ -29,7 +29,7 @@ int facade_get_pid_epidemic_sim(const Facade *facade) {
 }
 
 int facade_get_building(const Facade *facade, int row, int column) {
-    return facade->memory->buildings[row][column];
+    return facade->memory->City->grid;
 }
 
 int facade_get_infection(const Facade *facade, int row, int column) {

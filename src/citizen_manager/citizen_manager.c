@@ -39,7 +39,7 @@ void display_citizen( status_p *citi) {
     printf("Position: (%d, %d)\n", citi->positionX, citi->positionY);
     printf("Contamination Level: %.2f\n", citi->contamination);
     printf("Is Sick: %s\n", citi->is_sick ? "Yes" : "No");
-    printf('"')
+
     if (citi->type==DOCTOR ) {
         printf("Medical Pouches: %d\n", citi->care_pouch);
     } 

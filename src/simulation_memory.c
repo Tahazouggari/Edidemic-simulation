@@ -2,9 +2,11 @@
 #include <stdlib.h>
 
 
+
 #include "simulation_memory.h"
 #include "logger.h"
 #include "citizen_manager/citizen_manager.c"
+#include "city_manager/city_manager.c"
 
 /* 
  * ----------------------------------------------------------------------------
@@ -25,7 +27,7 @@ void set_pid_epidemic_sim(SimulationMemory *memory, pid_t pid_epidemic_sim){
 }
 
 void set_building(SimulationMemory *memory, int row, int col, int building_type){
-    memory->buildings[row][col] = building_type;
+   init_city( memory->City);
 }
 
 void set_hospital(SimulationMemory *memory){
@@ -139,6 +141,28 @@ void init_people(SimulationMemory *memory, int number_of_citizens, int number_of
 void initialize_memory(SimulationMemory *memory){
     //set_headline(memory);
     //set_day(memory, 1);
-    set_buildings(memory);
-    init_people(memory, 25, 6, 4, 0, 0);
+    
+    
+   // Inclure vos définitions nécessaires
+
+
+    
+
+    // Allouer dynamiquement la mémoire pour la ville
+    memory->City = (city_t *)malloc(sizeof(city_t));
+    if (!memory->City) {
+        fprintf(stderr, "Error: Memory allocation failed for City.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Allouer dynamiquement la mémoire pour chaque citoyen
+    for (int i = 0; i < 25; i++) {
+        memory->citizens[i] = (status_p *)malloc(sizeof(status_p));
+        
+    }
+    init_city(memory->City);
+
+   
+
 }
+
