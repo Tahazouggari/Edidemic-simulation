@@ -1,5 +1,6 @@
 #include "citizen_manager.h"
 #include "logger.h"
+#include <stdlib.h>
 
 /* 
  * ----------------------------------------------------------------------------
@@ -43,4 +44,11 @@ void display_citizen( status_p *citi) {
         printf("Medical Pouches: %d\n", citi->care_pouch);
     } 
     printf("\n");
+}
+
+void get_sick(status_p *citizen) {
+    double roll = (rand() / (RAND_MAX + 1.0));
+    if (roll < citizen->contamination) {
+        citizen->is_sick = 1;
+    }
 }

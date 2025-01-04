@@ -1,18 +1,18 @@
-#ifndef CITIZEN_MANAGER_H
-#define CITIZEN_MANAGER_H
+    #ifndef CITIZEN_MANAGER_H
+    #define CITIZEN_MANAGER_H
 
-#define CITIZEN_MAX_NAME_LENGTH 32
+    #define CITIZEN_MAX_NAME_LENGTH 32
 
-typedef enum Person{
-    CITIZEN,
-    DOCTOR,
-    FIREFIGHTER,
-    JOURNALIST,
-    REPORTER,
-    DEAD,
-    BURNED,
-}Person;
+    typedef enum Person{
+        CITIZEN,
+        DOCTOR,
+        FIREFIGHTER,
+        JOURNALIST,
+        REPORTER,
+        DEAD,
+        BURNED,
 
+<<<<<<< HEAD
 typedef struct status {
     int id; /*from 0 to the maximum number of that person's type, is unique and it helps keeping the citizen count under the maximum number of that person's type.*/
     unsigned int positionX;
@@ -28,16 +28,17 @@ typedef struct status {
                         ..  ..     in  the   ..  => 10 care pouch  */
 
 
-}status_p;
 
-/**
- * Create and initiaze right values for type citizen
- * @return
- */
+    }status_p;
 
-status_p* create_citizen(Person,unsigned in, unsigned int , int id_name);
+    /**
+     * Create and initiaze right values for type citizen
+     * @return
+     */
 
-/**
+    status_p* create_citizen(Person,unsigned in, unsigned int , int id_name);
+
+    /**
  * display status of citizen
  */
 
