@@ -37,6 +37,7 @@ run: $(TARGET)
 	$(OUTPUT_DIR)/epidemic_sim &
 	$(OUTPUT_DIR)/viewer &
 	$(OUTPUT_DIR)/gtk_press_agency
+	$(OUTPUT_DIR)/city
 
 run_citizen:
 	$(OUTPUT_DIR)/citizen_manager

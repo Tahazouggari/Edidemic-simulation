@@ -148,19 +148,8 @@ void initialize_memory(SimulationMemory *memory){
 
     
 
-    // Allouer dynamiquement la mémoire pour la ville
-    memory->City = (city_t *)malloc(sizeof(city_t));
-    if (!memory->City) {
-        fprintf(stderr, "Error: Memory allocation failed for City.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // Allouer dynamiquement la mémoire pour chaque citoyen
-    for (int i = 0; i < 25; i++) {
-        memory->citizens[i] = (status_p *)malloc(sizeof(status_p));
-        
-    }
-    init_city(memory->City);
+    
+   
 
    
 
