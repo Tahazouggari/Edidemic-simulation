@@ -11,6 +11,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
+#include "simulation_memory.h"
+#include "city_manager.h"
+#include "citizen_manager.h"
 
 #define RED "\x1B[31m"
 #define GRN "\x1B[32m"

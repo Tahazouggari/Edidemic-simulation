@@ -13,15 +13,25 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <string.h>
+#include "logger.h"
+#include "citizen_manager.h"
+#include "city_manager.h"
+#include "simulation_memory.h"
+ 
+void end_press_agency();
 
-#define SHM_NAME "epidemic_shared_memory"
-#define MAX_CITIZENS 100
+/**
+ * distroy the shared memory for the city
+ */
+void destroy_shared_memory(int, city_t *);
 
-typedef struct {
-    int healthy;
-    int sick;
-    int dead;
-    int burned;
-} CityState;
+/**
+ * write new numbers in
+ */
+void write_evolution(FILE *, int[4]);
 
+/**
+ * @return numbers to write in evolution.txt
+ */
+int *get_numbers(city_t *);
 #endif

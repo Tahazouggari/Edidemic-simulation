@@ -12,6 +12,7 @@ typedef struct facade_s Facade;
 
 struct facade_s {
     SimulationMemory *memory;
+    pid_t epidemic_sim_pid;
 
     int (*get_pid_epidemic_sim)(const Facade *);
     int (*get_building)(const Facade *, int, int);

@@ -30,7 +30,6 @@ int main(int argc, char **argv) {
     app = (Application *)malloc(sizeof(Application));
     
     app->simulation_facade = new_facade(memory);
-    initialize_memory(app->simulation_facade->memory);
     
     
     for (int i = 0; i < CITY_HEIGHT; i++) {

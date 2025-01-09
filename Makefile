@@ -10,7 +10,7 @@ CFLAGS = -Wall -Wextra -pedantic -std=c11 -g
 # libraries to link (-lXXX ex: -lm for maths)
 # Detect OS
 UNAME_S := $(shell uname -s)
-LDFLAGS = -lrt -lpthread
+LDFLAGS = -lrt -lpthread -lncurses
 
 ifeq ($(UNAME_S), Darwin)
   LDFLAGS = -lpthread
@@ -25,7 +25,7 @@ OUTPUT_DIR = ./out
 OBJS_LIST = epidemic_sim.o citizen.o plot.o city.o
 OBJS = $(addprefix $(BUILD_DIR), $(OBJS_LIST))
 
-TARGET = timer epidemic_sim citizen_manager gtk_press_agency viewer city_manager
+TARGET = timer citizen_manager gtk_press_agency viewer city_manager epidemic_sim
 
 .PHONY: all pipeline run run_citizen clean format structure
 
@@ -147,14 +147,14 @@ epidemic_sim: .tmp/epidemic_sim/main.o .tmp/epidemic_sim/epidemic_sim.o \
               .tmp/mq_unlink.o
 	$(CC) $^ -o $(OUTPUT_DIR)/$@ $(LDFLAGS)
 else
-epidemic_sim: .tmp/epidemic_sim/main.o .tmp/epidemic_sim/epidemic_sim.o .tmp/logger.o
+epidemic_sim: .tmp/epidemic_sim/main.o .tmp/epidemic_sim/epidemic_sim.o .tmp/logger.o .tmp/simulation_memory.o
 	$(CC) $^ -o $(OUTPUT_DIR)/$@ $(LDFLAGS)
 endif
 
-.tmp/epidemic_sim/main.o: $(SRC_DIR)/epidemic_sim/main.c $(INCLUDE_DIR)/epidemic_sim.h
+.tmp/epidemic_sim/main.o: $(SRC_DIR)/epidemic_sim/main.c $(INCLUDE_DIR)/epidemic_sim.h $(INCLUDE_DIR)/citizen_manager.h $(INCLUDE_DIR)/city_manager.h $(INCLUDE_DIR)/simulation_memory.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@)
 
-.tmp/epidemic_sim/epidemic_sim.o: $(SRC_DIR)/epidemic_sim/epidemic_sim.c $(INCLUDE_DIR)/epidemic_sim.h
+.tmp/epidemic_sim/epidemic_sim.o: $(SRC_DIR)/epidemic_sim/epidemic_sim.c $(INCLUDE_DIR)/epidemic_sim.h $(INCLUDE_DIR)/citizen_manager.h $(INCLUDE_DIR)/city_manager.h $(INCLUDE_DIR)/simulation_memory.h
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@)
 
 # -----------------------------------------------------------------------------

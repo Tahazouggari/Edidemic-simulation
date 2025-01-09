@@ -22,12 +22,12 @@ Facade *new_facade(const SimulationMemory *memory) {
 }
 
 int facade_get_pid_epidemic_sim(const Facade *facade) {
-    return 0;
+    return facade->memory->pid_epidemic_sim;
 }
 
 int facade_get_building(const Facade *facade, int row, int column) {
     printf("%d",facade->memory->City._grid[row][column]._locationType );
-    printf("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+ 
     return facade->memory->City._grid[row][column]._locationType;
     
   
