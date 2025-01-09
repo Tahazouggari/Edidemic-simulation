@@ -25,7 +25,7 @@ OUTPUT_DIR = ./out
 OBJS_LIST = epidemic_sim.o citizen.o plot.o city.o
 OBJS = $(addprefix $(BUILD_DIR), $(OBJS_LIST))
 
-TARGET = timer epidemic_sim citizen_manager gtk_press_agency viewer
+TARGET = timer epidemic_sim citizen_manager gtk_press_agency viewer city_manager
 
 .PHONY: all pipeline run run_citizen clean format structure
 
@@ -37,7 +37,7 @@ run: $(TARGET)
 	$(OUTPUT_DIR)/epidemic_sim &
 	$(OUTPUT_DIR)/viewer &
 	$(OUTPUT_DIR)/gtk_press_agency
-	$(OUTPUT_DIR)/city
+	
 
 run_citizen:
 	$(OUTPUT_DIR)/citizen_manager
@@ -311,7 +311,7 @@ format:
 
 structure:
 	mkdir -p $(BUILD_DIR)
-	mkdir -p $(BUILD_DIR)/sdl_press_agency $(BUILD_DIR)/timer $(BUILD_DIR)/gtk_press_agency $(BUILD_DIR)/citizen_manager $(BUILD_DIR)/epidemic_sim $(BUILD_DIR)/patterns $(BUILD_DIR)/viewer
+	mkdir -p $(BUILD_DIR)/sdl_press_agency $(BUILD_DIR)/timer $(BUILD_DIR)/gtk_press_agency $(BUILD_DIR)/citizen_manager $(BUILD_DIR)/epidemic_sim $(BUILD_DIR)/patterns $(BUILD_DIR)/viewer $(BUILD_DIR)/city_manager
 	mkdir -p $(OUTPUT_DIR)
 #	mkdir -p $(TEST_DIR)/out
 
