@@ -35,7 +35,7 @@ typedef struct status
  * @return
  */
 
-status_p *create_citizen(Person e, unsigned int, unsigned int, int id_name);
+status_p create_citizen(Person e, unsigned int, unsigned int, int id_name);
 
 /**
  * display status of citizen
@@ -44,5 +44,9 @@ status_p *create_citizen(Person e, unsigned int, unsigned int, int id_name);
 void display_citizen(status_p *);
 
 void get_sick(status_p *);
-
+int is_at_position(status_p citizen, unsigned int x, unsigned int y);
+void heal(status_p *citizen);
+void add_citizen_contamination(status_p *citizen, double cont);
+void die(status_p *citizen, double chance);
+void refill_tools(status_p *citizen, int in_hospital, int in_firestation);
 #endif /* CITIZEN_MANAGER_H */
