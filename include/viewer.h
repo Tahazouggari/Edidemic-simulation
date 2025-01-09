@@ -11,9 +11,6 @@
 #define CELL_HEIGHT 68
 #define TYPES_OF_CHARACTER 5 /* doctor, firefighter, citizen, dead citizen, burnt bodies */
 
-enum building_e {
-    FIRE_STATION, HOSPITAL, HOUSE, WASTELAND
-};
 
 typedef enum building_e Building;
 

@@ -107,7 +107,7 @@ GtkWidget *create_simulation_board(Application *app) {
     int width;
     int height;
     Facade *facade;
-
+    
     width = CITY_COLUMNS * (CELL_WIDTH + 1);
     height = CITY_ROWS * (CELL_HEIGHT + 1);
     facade = app->simulation_facade;
@@ -123,7 +123,7 @@ GtkWidget *create_simulation_board(Application *app) {
     for (int row = 0; row < CITY_ROWS; row++) {
         for (int col = 0; col < CITY_COLUMNS; col++) {
             switch (facade->get_building(facade, row, col)) {
-                case FIRE_STATION:
+                case FIRESTATION:
                     app->images[row][col] =
                             gtk_image_new_from_file(
                                     "resources/firestation.png");
@@ -289,11 +289,7 @@ void update_infection_labels(const Application *app, int row, int col) {
 }
 
 void count_citizens(const Application *app, int row, int col, int *citizens, int *doctors, int *firefighters, int *dead_citizens, int *burnt_bodies) {
-    *citizens = app->simulation_facade->memory->n_of_citizens[row][col];
-    *doctors = app->simulation_facade->memory->n_of_doctors[row][col];
-    *firefighters = app->simulation_facade->memory->n_of_firefighters[row][col];
-    *dead_citizens = app->simulation_facade->memory->n_of_dead_citizens[row][col];
-    *burnt_bodies = app->simulation_facade->memory->n_of_ashes[row][col];
+   
 }
 
 void update_citizen_labels_and_images(const Application *app, int row, int col,

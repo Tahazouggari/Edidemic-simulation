@@ -4,7 +4,8 @@
 #define CITY_WIDTH 7
 #define CITY_HEIGHT 7
 #define NBR_TOTAL 37
-
+#include "citizen_manager.h"
+#include "stdlib.h"
 typedef enum building_type {
     WASTELAND, HOUSE, HOSPITAL, FIRESTATION
 } building_type;
@@ -18,17 +19,17 @@ typedef enum building_type {
  * - currentOccupancy : nombre actuel de citoyens
  */
 typedef struct {
-    building_type locationType;
-    double contaminationLevel;
-    int capacity;
-    int currentOccupancy;
+    building_type _locationType;
+    double _contaminationLevel;
+    int _capacity;
+    int _currentOccupancy;
 } city_tile_t;
 
 /**
  * Représente la ville sous forme d'une grille 7x7
  */
 typedef struct {
-    city_tile_t grid[CITY_HEIGHT][CITY_WIDTH];
+    city_tile_t _grid[CITY_HEIGHT][CITY_WIDTH];
     status_p _citizens[NBR_TOTAL];
 } city_t;
 
