@@ -7,16 +7,16 @@
  * Runs the City Manager process.
  */
 int main() {
-    // Initialiser le générateur de nombres aléatoires
+    
     srand(time(NULL));
 
-    // Déclaration de la ville
     city_t city;
 
-    // Initialisation de la ville
+   
     init_city(&city);
+    create_population(&city);
 
-    // Affichage de la grille pour vérifier les résultats
+    // Affichage initial de la grille
     printf("Grille de la ville :\n");
     for (int i = 0; i < CITY_HEIGHT; i++) {
         for (int j = 0; j < CITY_WIDTH; j++) {
@@ -33,7 +33,7 @@ int main() {
         printf("\n");
     }
 
-    // Vérification des niveaux de contamination
+   
     printf("\nNiveaux de contamination :\n");
     for (int i = 0; i < CITY_HEIGHT; i++) {
         for (int j = 0; j < CITY_WIDTH; j++) {
@@ -42,6 +42,29 @@ int main() {
             }
         }
     }
+
+   
+   
+    for (int i = 0; i < CITY_HEIGHT; i++) {
+        for (int j = 0; j < CITY_WIDTH; j++) {
+            if (city._grid[i][j]._contaminationLevel > 0) {
+                printf("Tile [%d][%d] contamination : %.2f\n", i, j, city._grid[i][j]._contaminationLevel);
+            }
+        }
+    }
+
+    
+    
+    printf("\nStatistiques de la ville :\n");
+    printf("Nombre total de citoyens : %d\n", get_number_citizen(&city));
+    printf("Nombre de citoyens malades : %d\n", get_number_of_sick(&city));
+    printf("Nombre de citoyens morts : %d\n", get_number_of_dead(&city));
+    printf("Nombre de citoyens brûlés : %d\n", get_number_of_burned(&city));
+    printf("Niveau moyen de contamination : %.2f\n", average_contamination(&city));
+
+    // Affichage final de la grille
+    printf("\nAffichage final de la ville :\n");
+    display_city(&city);
 
     return 0;
 }

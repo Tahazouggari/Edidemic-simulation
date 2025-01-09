@@ -62,11 +62,11 @@ timer: .tmp/timer/main.o .tmp/timer/timer.o
 # -----------------------------------------------------------------------------
 #
 city_manager: .tmp/city_manager/main.o .tmp/city_manager/city_manager.o \
-                 .tmp/logger.o
+                 .tmp/logger.o  .tmp/citizen_manager/citizen_manager.o 
 	$(CC) $^ -o $(OUTPUT_DIR)/$@ $(LDFLAGS)
 	chmod u+x $(OUTPUT_DIR)/$@
 
-.tmp/city_manager/main.o: $(SRC_DIR)/city_manager/main.c $(INCLUDE_DIR)/city_manager.h
+.tmp/city_manager/main.o: $(SRC_DIR)/city_manager/main.c $(INCLUDE_DIR)/city_manager.h 
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $(@)
 
 .tmp/city_manager/city_manager.o: $(SRC_DIR)/city_manager/city_manager.c $(INCLUDE_DIR)/city_manager.h

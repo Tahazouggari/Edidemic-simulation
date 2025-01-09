@@ -41,7 +41,21 @@ void create_population(city_t *city);
 void add_tile_contamination(city_tile_t *tile, double cont);
 int sickest_of_title(city_t *city, unsigned int x, unsigned int y);
 double average_contamination(city_t *city);
+
+void contaminate_citizens_on_tile(city_t *city, unsigned int x, unsigned int y);
+void contaminate_citizens_on_tiles_around(city_t *city, unsigned int x, unsigned int y);
+void eject_healed(city_t *city);
+int doctor_present(city_t *city, unsigned int x, unsigned int y);
+int hasFireFighter(city_t *city, unsigned int x, unsigned int y);
+int get_number_of_dead(city_t *city) ;
+int get_number_of_healthy(city_t *city);
+int get_number_of_sick(city_t *city);
 void display_city(city_t *city);
+int get_number_citizen(city_t *city);
+int get_number_of_burned(city_t *city);
+int get_number_citizen_on_tile(int x, int y, city_t *city);
+int *get_dead_id(city_t *city) ;
+void wasteland_contamination_spread(city_t *city) ;
 
 
 

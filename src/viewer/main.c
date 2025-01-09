@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     }
     
     /* G_APPLICATION_FLAGS_NONE is deprecated, but is always used on Ubuntu 22.04. */
-    gtk_app = gtk_application_new("fr.ensicaen.ecole.viewer", G_APPLICATION_FLAGS_NONE);
+    //gtk_app = gtk_application_new("fr.ensicaen.ecole.viewer", G_APPLICATION_FLAGS_NONE);
     //g_signal_connect(gtk_app, "activate", G_CALLBACK(activate), app);
    // status = g_application_run(G_APPLICATION(gtk_app), argc, argv);
 
